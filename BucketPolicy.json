@@ -1,0 +1,44 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AWScodebuildBucketPermissionsCheck",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "codebuild.amazonaws.com"
+                ]
+            },
+            "Action": "s3:GetBucketAcl",
+            "Resource": "arn:aws:s3:::targetBucketName"
+        },
+        {
+            "Sid": "AWScodebuildBucketExistenceCheck",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "codebuild.amazonaws.com"
+                ]
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::targetBucketName"
+        },
+        {
+            "Sid": "AWScodebuildBucketDelivery",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "codebuild.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::s3test.srivittal.com/*"
+        }
+    ]
+}
